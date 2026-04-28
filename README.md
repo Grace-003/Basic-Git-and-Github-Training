@@ -218,5 +218,3 @@ git push
 - GitHub Guides: https://guides.github.com
 
 ---
-
-If you want, I can also add a short set of exercises and example commands you can run step-by-step.
