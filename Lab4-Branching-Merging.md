@@ -4,6 +4,9 @@
 
 ## Step 16 — Create a Branch
 
+> **Use it when:** you're about to start a new feature, a bug fix, or an experiment and you don't want half-finished work sitting on `main`. A branch is a private lane — you can commit freely, and `main` stays working the whole time.
+> **Naming:** teams usually use `feature/...`, `bugfix/...`, `hotfix/...` so the branch name says what it's for.
+
 Terminal:
 
 ```bash
@@ -13,6 +16,8 @@ git branch                          # confirm you are on new branch
 ```
 
 ## Step 17 — Work on Branch & Commit
+
+> **Use it when:** you're on your branch and building. Commit as often as you like here — these commits are yours alone until you merge or push, so nobody sees the messy middle.
 
 In VSCode — right click → New File → `login.txt`
 
@@ -33,6 +38,10 @@ git commit -m "add login page"
 
 ## Step 18 — Merge Branch into Main
 
+> **Use it when:** the feature is finished and tested, and you want it in `main` for everyone.
+> **Order matters:** always `git checkout` the branch you want to merge *into* first (here, `main`), then `git merge <the-other-branch>`. Doing it backwards merges main into your feature instead.
+> **On a team:** you'd usually push the branch and open a Pull Request on GitHub rather than merging locally — same idea, but with review.
+
 Terminal:
 
 ```bash
@@ -44,6 +53,8 @@ git log --oneline --graph --all
 ```
 
 ## Step 19 — Create a Merge Conflict
+
+> **Why practise this:** a conflict happens whenever two branches changed the *same lines* of the *same file*. It is normal, not a bug or a mistake — every developer hits it. Better to meet it here, on a throwaway file, than the first time on real work.
 
 Terminal:
 
@@ -89,6 +100,11 @@ git merge feature/conflict          # conflict will appear
 
 ## Step 20 — Resolve the Conflict
 
+> **Use it when:** a merge or pull stops with "CONFLICT" and Git asks you to decide. Git can't know which version is right, so it puts both in the file and hands it to you.
+> **How to read the markers:** everything between `<<<<<<< HEAD` and `=======` is *your current branch*; between `=======` and `>>>>>>>` is *the branch coming in*. Keep one, keep the other, or write a combination — then delete all three marker lines, save, `git add`, `git commit`.
+> **VSCode shortcut:** it shows "Accept Current / Accept Incoming / Accept Both" buttons above the conflict — clicking those does the same thing.
+> **Panicking?** `git merge --abort` puts everything back the way it was before the merge.
+
 In VSCode — open `hello.txt`, you will see:
 
 ```
@@ -118,6 +134,9 @@ git log --oneline --graph --all
 ```
 
 ## Step 21 — Delete a Branch
+
+> **Use it when:** the branch is merged and you're done with it. Old branches pile up fast and make `git branch` unreadable.
+> **Safe vs forced:** `-d` refuses to delete a branch that hasn't been merged — that refusal is a safety net protecting unmerged work. `-D` forces it, so only use `-D` when you're sure you want to throw that work away.
 
 Terminal:
 

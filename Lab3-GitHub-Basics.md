@@ -4,6 +4,9 @@
 
 ## Step 12 — Connect to GitHub
 
+> **Use it when:** your project so far only exists on your laptop and you now want a backup, a place to share it, or to work on it from another machine. `git remote add origin` tells your local repo *where* on GitHub it belongs — it does not upload anything yet.
+> **Already have a remote?** Then you don't need this — `git remote -v` will show it. To point at a different repo instead, use `git remote set-url origin <new-url>`.
+
 Go to GitHub.com → New Repository → name it `my-project` → Create (no README)
 
 Terminal:
@@ -15,6 +18,9 @@ git remote -v
 
 ## Step 13 — Push to GitHub
 
+> **Use it when:** you have commits on your machine that GitHub doesn't have yet. Push = upload.
+> **Why `-u`:** it links your local `main` to `origin/main` once, so from then on plain `git push` and `git pull` work without naming the branch.
+
 Terminal:
 
 ```bash
@@ -24,6 +30,9 @@ git push -u origin main
 Refresh GitHub in browser — your files are live ✅
 
 ## Step 14 — Clone a Repo
+
+> **Use it when:** the project already exists on GitHub and you want a copy on this machine — joining a team's project, setting up a second laptop, or grabbing someone's open-source code.
+> **Clone vs init:** clone for a project that already exists remotely; `git init` (Step 2) for one you're starting yourself. Clone also sets up `origin` for you, so no Step 12 needed.
 
 Terminal:
 
@@ -40,6 +49,9 @@ File → Open Folder → select cloned my-project
 ```
 
 ## Step 15 — Pull Changes from GitHub
+
+> **Use it when:** someone else pushed changes and your copy is out of date. Pull = download + merge into your branch.
+> **Habit worth building:** pull *before* you start working each day, and again before you push. If you push without pulling, Git rejects it with "rejected — non-fast-forward" — that just means the remote has commits you don't; pull first, then push.
 
 In VSCode — open `hello.txt`, add a line:
 
@@ -69,6 +81,9 @@ git pull origin main
 Open `hello.txt` in VSCode — teammate's line is now here ✅
 
 ## SSH Authentication Setup for GitHub
+
+> **Use it when:** every push and pull is asking you for a username and password/token and you're tired of it, or you're setting up a machine you'll use regularly. One-time setup per machine.
+> **Which path:** on Windows, stick with HTTPS + Git Credential Manager (it's already installed and just works). On macOS and Linux, generate an SSH key. Either way you only do it once.
 
 HTTPS asks for a username/password (or token) every time you push. SSH uses a key pair instead — set it up once per machine.
 
