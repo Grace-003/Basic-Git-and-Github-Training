@@ -102,5 +102,83 @@ git merge feature/rebase-demo       # fast forward, clean history
 git log --oneline --graph           # linear, no merge commit ✅
 ```
 
+### Rebase in everyday use — `git pull --rebase` vs `git pull --no-rebase`
+
+> **Use it when:** you committed something locally, a teammate pushed something to GitHub, and now `git pull` has two histories to combine. These two flags are the two ways of combining them — merge, or rebase.
+
+Starting point for both examples — the common history is `A --- B`, then the two sides go their own way:
+
+```
+Local:      A --- B --- C        (your commit C)
+GitHub:     A --- B --- D        (teammate's commit D)
+```
+
+#### Option 1 — merge (`--no-rebase`)
+
+```bash
+git pull origin main --no-rebase
+```
+
+Git joins the two histories by creating a **new merge commit** `M`:
+
+```
+A --- B --- C -------- M
+       \              /
+        ------ D -----
+```
+
+`M` = merge commit. Your `C` and their `D` both stay exactly as they were — nothing is rewritten. The history keeps a visible record that two lines of work came together here.
+
+- **Good:** nothing is rewritten, so it's always safe — even on a branch other people share.
+- **Cost:** the graph branches and rejoins. On a busy repo you get a lot of "Merge branch 'main'..." commits.
+
+#### Option 2 — rebase (`--rebase`)
+
+```bash
+git pull origin main --rebase
+```
+
+Git takes your local commit `C` off first, so you're temporarily back to the remote's history:
+
+```
+A --- B --- D
+```
+
+Then it re-applies `C` on top of the latest remote commit:
+
+```
+A --- B --- D --- C'
+```
+
+Notice: **`C` ≠ `C'`**. It has the same changes and the same message, but a different parent, so it's technically a **new commit with a new hash** — the old `C` is gone.
+
+Result:
+
+```
+A --- B --- D --- C'
+```
+
+The history is one straight line, with no merge commit — the same thing `git rebase main` did above, just done as part of the pull.
+
+- **Good:** clean, linear log — easy to read and to `git bisect`.
+- **Cost:** it rewrites your commits. Fine for commits that only exist on your machine; the golden rule above still applies — **never rebase commits you've already pushed and shared**, because everyone else still has the old hashes.
+
+#### Which one should you use?
+
+| Situation | Use |
+|---|---|
+| Your local commits aren't pushed yet | `--rebase` — keeps history linear |
+| You're on a shared branch others have already pulled from | `--no-rebase` — safe, rewrites nothing |
+| You're not sure | `--no-rebase` — merging is never wrong, just noisier |
+
+> **Tip:** if you never want to think about it again, set a default once per machine:
+>
+> ```bash
+> git config --global pull.rebase false   # always merge
+> git config --global pull.rebase true    # always rebase
+> ```
+>
+> Without this, newer Git versions refuse to pull when both sides have moved and print a hint asking you to pick one — that's the message this section explains.
+
 ---
 Next: [Lab 6 — Tags & Releases](Lab6-Tags-Releases.md)
