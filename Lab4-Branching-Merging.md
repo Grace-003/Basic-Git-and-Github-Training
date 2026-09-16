@@ -146,5 +146,37 @@ git branch -d feature/conflict      # safe delete
 git branch                          # confirm deleted ✅
 ```
 
+
+## Bonus command — Switch Between Branches with `git switch`
+
+> **Use it when:** you want to move between branches. `git switch` is the modern, branch-focused alternative to using `git checkout`.
+
+```bash
+git branch                         # see all branches
+git switch main                    # switch to an existing branch
+git switch feature/login           # switch to feature/login
+git switch -c feature/dashboard    # create + switch to a new branch
+git branch                         # confirm current branch
+git status                         # check current branch
+```
+
+`git switch <branch>` switches to an existing branch.
+
+`git switch -c <branch>` creates a new branch and switches to it.
+
+For example:
+
+```bash
+git switch main
+git switch -c feature/profile
+git switch main
+git switch feature/profile
+```
+
+> **Remember:** `git checkout -b feature/login` and `git switch -c feature/login` both create and switch to a new branch, but `git switch` is clearer because it is specifically designed for branch switching.
+
+> **Tip:** Run `git status` before switching if you have uncommitted changes, so you know what work is currently in your working tree.
+
+
 ---
 Next: [Lab 5 — Advanced Commands](Lab5-Advanced-Commands.md)
