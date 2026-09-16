@@ -1,6 +1,23 @@
 # Git & GitHub — Complete Step by Step (VSCode + Terminal)
 
-This training is split into 7 labs, each in its own README file. Work through them in order.
+![Last Commit](https://img.shields.io/github/last-commit/pr4shxnt/Basic-Git-and-Github-Training)
+![Repo Size](https://img.shields.io/github/repo-size/pr4shxnt/Basic-Git-and-Github-Training)
+![Issues](https://img.shields.io/github/issues/pr4shxnt/Basic-Git-and-Github-Training)
+![Stars](https://img.shields.io/github/stars/pr4shxnt/Basic-Git-and-Github-Training?style=flat)
+![Made with Markdown](https://img.shields.io/badge/made%20with-Markdown-1f425f.svg)
+
+A hands-on, step-by-step training for learning Git and GitHub using VSCode and the terminal side by side. No prior Git experience required — just follow the labs in order.
+
+## How to use this training
+
+1. Open this repo in VSCode.
+2. Work through the labs **in order** — each one builds on commands and state from the last.
+3. Type the terminal commands yourself instead of copy-pasting; muscle memory is the point.
+4. Use the "Back to index" link at the bottom of each lab to return here.
+
+## Labs
+
+This training is split into 7 labs, each in its own file.
 
 | Lab | Topic | File |
 |---|---|---|
@@ -14,4 +31,7 @@ This training is split into 7 labs, each in its own README file. Work through th
 
 Each lab README contains the exact terminal commands and VSCode actions needed to complete its steps.
 
+## Contributing
+
+Found a typo or a step that doesn't work as written? Open an issue or a pull request — this is a training resource, and corrections make it better for the next learner.
 Thank You !
