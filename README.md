@@ -13,3 +13,5 @@ This training is split into 7 labs, each in its own README file. Work through th
 | Lab 7 | Inspection & Utilities (Step 28) | [Lab7-Inspection-Utilities.md](Lab7-Inspection-Utilities.md) |
 
 Each lab README contains the exact terminal commands and VSCode actions needed to complete its steps.
+
+Thank You !
