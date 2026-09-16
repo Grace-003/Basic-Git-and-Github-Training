@@ -2,6 +2,15 @@
 
 [← Back to index](README.md)
 
+## Definitions
+
+- Repository: A project folder tracked by Git.
+- Commit: A saved snapshot of your project.
+- Working directory: The files currently on your machine.
+- Staging area: The prepared changes before a commit.
+- Branch: A separate line of development.
+- Remote: The GitHub version of the repository.
+
 ## Step 1 — Configure Git (One Time Only)
 
 > **Use it when:** you just installed Git on a new laptop and haven't committed anything yet.
