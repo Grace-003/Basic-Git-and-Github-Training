@@ -3,7 +3,7 @@
 [← Back to index](README.md)
 
 ## Definitions
-
+i am learning pull request
 - Repository: A project folder tracked by Git.
 - Commit: A saved snapshot of your project.
 - Working directory: The files currently on your machine.
